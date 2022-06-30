@@ -13,7 +13,7 @@ char *prog;
 int main(int argc, char *argv[]) {
 	FILE *fp;
 	char *dp, *pp, *end;
-	int i, n;
+	int i;
 
 	if(argc != 2) {
 		fprintf(stderr, "error: one file argument required\n");
@@ -53,25 +53,25 @@ int main(int argc, char *argv[]) {
 		case ',': *dp = getchar(); break;
 		case '[':
 			if(!*dp) {
-				n = 1;
-				while(n > 0) {
+				i = 1;
+				while(i > 0) {
 					++pp;
 					if(*pp == '[')
-						++n;
+						++i;
 					else if(*pp == ']')
-						--n;
+						--i;
 				}
 			}
 			break;
 		case ']':
 			if(*dp) {
-				n = 1;
-				while(n > 0) {
+				i = 1;
+				while(i > 0) {
 					--pp;
 					if(*pp == '[')
-						--n;
+						--i;
 					else if(*pp == ']')
-						++n;
+						++i;
 				}
 			}
 			break;
